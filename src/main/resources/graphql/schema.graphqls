@@ -1,0 +1,43 @@
+type Department {
+	id: String
+	deptName: String
+	managerName: String
+}
+
+type User {
+	id: String
+	name: String
+	age: Int
+	deptId: String
+	empId: String
+	dob: String
+	role: String
+}
+
+input UserInput {
+	id: String
+	name: String
+	age: Int
+	deptId: String
+	empId: String
+	dob: String
+	role: String
+}
+
+input DepartmentInput {
+	id: String
+	deptName: String
+	managerName: String
+}
+
+# Root
+type Query {
+	findAllDepartments: [Department]
+	findAllUsers: [User]
+}
+
+# Root
+type Mutation {
+	createDepartment(department: DepartmentInput): Department
+	createUser(user: UserInput): User
+}
