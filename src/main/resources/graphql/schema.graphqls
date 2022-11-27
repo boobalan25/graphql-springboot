@@ -34,10 +34,16 @@ input DepartmentInput {
 type Query {
 	findAllDepartments: [Department]
 	findAllUsers: [User]
+	findDepartmentById(id: String): Department
+	findUserById(id: String): User
 }
 
 # Root
 type Mutation {
 	createDepartment(department: DepartmentInput): Department
 	createUser(user: UserInput): User
+	updateDepartment(department: DepartmentInput): Department
+	updateUser(user: UserInput): User
+	removeDepartmentById(id : String): Boolean
+	removeUserById(id: String): Boolean
 }

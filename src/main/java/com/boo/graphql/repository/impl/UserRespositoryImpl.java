@@ -25,4 +25,9 @@ public class UserRespositoryImpl {
 	public List<User> findAllUsers() {
 		return userRepository.findAll();
 	}
+	
+	@SchemaMapping(typeName = "Query", value = "findUserById")
+	public User findUserById(@Argument String id) {
+		return userRepository.findById(id).orElse(null);
+	}
 }

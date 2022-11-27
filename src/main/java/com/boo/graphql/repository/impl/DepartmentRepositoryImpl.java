@@ -25,4 +25,9 @@ public class DepartmentRepositoryImpl {
 	public List<Department> findAllDepartments() {
 		return departmentRepository.findAll();
 	}
+	
+	@SchemaMapping(typeName = "Query", value = "findDepartmentById")
+	public Department findDepartmentById(@Argument String id) {
+		return departmentRepository.findById(id).orElse(null);
+	}
 }
