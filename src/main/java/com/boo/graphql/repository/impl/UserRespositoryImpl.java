@@ -1,6 +1,7 @@
 package com.boo.graphql.repository.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -30,4 +31,12 @@ public class UserRespositoryImpl {
 	public User findUserById(@Argument String id) {
 		return userRepository.findById(id).orElse(null);
 	}
+	
+	public User resolveUserReference(Map<String, Object> reference) {
+        if (reference.get("id") instanceof String fooId) {
+            return findUserById(fooId);
+        } else {
+            return null;
+        }
+    }
 }

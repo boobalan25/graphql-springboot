@@ -1,6 +1,7 @@
 package com.boo.graphql.repository.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -30,4 +31,12 @@ public class DepartmentRepositoryImpl {
 	public Department findDepartmentById(@Argument String id) {
 		return departmentRepository.findById(id).orElse(null);
 	}
+	
+	public Department resolveDepartmentReference(Map<String, Object> reference) {
+        if (reference.get("id") instanceof String fooId) {
+            return findDepartmentById(fooId);
+        } else {
+            return null;
+        }
+    }
 }

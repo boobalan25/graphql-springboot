@@ -1,11 +1,31 @@
-type Department {
-	id: String
+directive @contact(
+    name: String!
+    url: String
+    description: String
+) on SCHEMA
+
+schema
+@contact(
+    name: "User Server Team"
+    url: ""
+    description: "send urgent issues."
+)
+@link(
+    url: "https://specs.apollo.dev/federation/v2.0",
+    import: ["@key"]
+) {
+    query: Query
+    mutation: Mutation
+}
+
+type Department @key(fields: "id") {
+	id: ID
 	deptName: String
 	managerName: String
 }
 
-type User {
-	id: String
+type User @key(fields: "id") {
+	id: ID
 	name: String
 	age: Int
 	deptId: String
@@ -15,7 +35,7 @@ type User {
 }
 
 input UserInput {
-	id: String
+	id: ID
 	name: String
 	age: Int
 	deptId: String
@@ -25,7 +45,7 @@ input UserInput {
 }
 
 input DepartmentInput {
-	id: String
+	id: ID
 	deptName: String
 	managerName: String
 }

@@ -7,5 +7,5 @@ import com.boo.graphql.entities.User;
 
 @Service
 public interface UserRepository extends MongoRepository<User, String> {
-
+	
 }
